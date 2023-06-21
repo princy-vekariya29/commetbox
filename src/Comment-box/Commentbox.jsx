@@ -59,10 +59,9 @@ function Commentbox() {
                             viewData.map((d) => {
                                 return (
                                     <>
-                                        <div className="d-flex justify-content-center align-items-center w-100">
+                                        <div className="d-flex justify-content-center align-items-center w-100" >
                                             <div className="toast" role="alert" aria-live="assertive" aria-atomic="true">
                                                 <div className="toast-header">
-                                                    <img src="..." className="rounded me-2" alt="..." />
                                                     <strong className="me-auto">
                                                         {
                                                             d.fname + " " + d.lname
