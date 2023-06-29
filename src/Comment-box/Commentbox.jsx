@@ -1,4 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+
+const getData = () =>{
+  let getdata = JSON.parse(localStorage.getItem("data"));
+
+  if(getdata != null) {
+    return getdata;
+  }
+  return [];
+}
 
 function Commentbox() {
     const [inputList, setinputList] = useState({
@@ -7,7 +16,8 @@ function Commentbox() {
         cname: ''
     });
 
-    const [viewData, setviewData] = useState([]);
+    const [viewData, setviewData] = useState(getData());
+    // console.log("data",data);
 
     const handlechange = (e) => {
         let name = e.target.name;
@@ -24,7 +34,20 @@ function Commentbox() {
         let name = inputList
         // console.log("name",name);
         setviewData([...viewData, name])
-    }
+        setinputList({
+            fname: '',
+            lname: '',
+            cname: ''
+        });
+
+    }     
+
+    
+    useEffect(()=>{
+        localStorage.setItem ("data",JSON.stringify(viewData));
+        console.log("hello");
+    },[viewData])
+    
     return (
         <>
             <div className="container">
